@@ -5,7 +5,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class LeafTapsAssignment {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		
 		System.setProperty("webdriver.chrome.driver", "./chromedriver.exe");
 		// Open chrome browser
@@ -19,30 +19,23 @@ public class LeafTapsAssignment {
     WebElement pwdValue = driver.findElementById("password");
     pwdValue.sendKeys("crmsfa");
     
-    pwdValue.clear();
-    
-    //LinkText
-    
-    
-    //WebElement pwdValue = driver.findElementById("password").sendKeys("crmsfa");
-    
-    //WebElement pwdValue1 = driver.findElementByName("PASSWORD");
-    //pwdValue1.sendKeys("crmsfa");
-    
     WebElement loginButton = driver.findElementByClassName("decorativeSubmit");
     loginButton.click();
+    WebElement crmLink = driver.findElementByLinkText("CRM/SFA");
+    crmLink.click();
+    Thread.sleep(4000);
+    driver.findElementByLinkText("Create Lead").click();
+    driver.findElementById("createLeadForm_companyName").sendKeys("Infy");
+    driver.findElementById("createLeadForm_firstName").sendKeys("Sunitha");
+    driver.findElementById("createLeadForm_lastName").sendKeys("S");
+    driver.findElementByName("submitButton").click();
     
-	//driver.navigate().back();
-	String title = driver.getTitle();
-	System.out.println(title);
-	
-	driver.navigate().refresh();
-	
-	//both are same
-	driver.get("google.co.in");
-	driver.navigate().to("google.co.in");
+    String title = driver.getTitle();
+    System.out.println(title);
+    
+    Thread.sleep(4000);
+    
 	driver.close();
-	
 	
 	}
 
