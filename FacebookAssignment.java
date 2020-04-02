@@ -7,25 +7,28 @@ public class FacebookAssignment {
 
 	public static void main(String[] args) throws InterruptedException {
 		
+
 		System.setProperty("webdriver.chrome.driver", "./chromedriver.exe");
 		// Open chrome browser
 		//chromedriver (is a class) > written by selenium team
 		
 	ChromeDriver driver = new ChromeDriver();
-	driver.get("http://leaftaps.com/opentaps/control/main");
-    WebElement userName = driver.findElementById("username");
-    userName.sendKeys("DemoSalesManager");
+	driver.get("https://www.facebook.com/");
+	Thread.sleep(2000);
+    WebElement userName = driver.findElementById("email");
+    userName.sendKeys("shruthi.suchi@gmail.com");
     
-    WebElement pwdValue = driver.findElementById("password");
-    pwdValue.sendKeys("crmsfa");
+    WebElement pwdValue = driver.findElementById("pass");
+    pwdValue.sendKeys("Lifegone@123");
     
-    WebElement loginButton = driver.findElementByClassName("decorativeSubmit");
+    
+    WebElement loginButton = driver.findElementByXPath("//form[@id='login_form']//table/tbody[1]/tr[2]/td[3]/label[1]/input[1]");
     loginButton.click();
-    WebElement crmLink = driver.findElementByLinkText("CRM/SFA");
-    crmLink.click();
-    Thread.sleep(4000);
+    Thread.sleep(2000);
+    
+    driver.findElementById("userNavigationLabel").click();
+    
 	driver.close();
-	
 	
 	}
 
