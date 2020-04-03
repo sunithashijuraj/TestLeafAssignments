@@ -13,23 +13,30 @@ public class TestCaseTwo {
 		//Setting system property
 		System.setProperty("webdriver.chrome.driver", "./chromedriver.exe");
 		ChromeDriver driver = new ChromeDriver();
-		//driver.manage().timeouts().implicitlyWait(2000, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
 		//Launching the red bus application
 		driver.get("https://www.redbus.in/");
 		//input the source as Chennai
 		driver.findElement(By.id("src")).sendKeys("Chennai");
-		Thread.sleep(500);
+		Thread.sleep(3000);
 		driver.findElement(By.id("src")).sendKeys(Keys.TAB);
 		//Input the destination as Bangalore
 		driver.findElement(By.id("dest")).sendKeys("Bangalore");
-        driver.findElement(By.id("onward_cal")).click();	
+		Thread.sleep(3000);
+		driver.findElement(By.id("dest")).sendKeys(Keys.TAB);		
+		
+        //driver.findElement(By.id("onward_cal")).click();	
 		//click on the date field
 		driver.findElement(By.xpath("(//td[text()='30'])[2]")).click();
 		//click on the search button
+		
 		driver.findElement(By.id("search_btn")).click();
-		Thread.sleep(3000);
-		driver.findElement(By.xpath("(//label[@class='cbox-label'])[4]")).click();
+		//Select After 6 pm
+		driver.findElement(By.xpath("(//label[@for='dtAfter 6 pm'])[2]")).click();
+		//Select Sleeper
 		driver.findElement(By.xpath("//label[@title='SLEEPER']")).click();
+		
+		//click on seats available
 		
 		driver.findElement(By.xpath("(//div[contains(@class,'w-15 fl')]//a)[2]")).click();
 		
